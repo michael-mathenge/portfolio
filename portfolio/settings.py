@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%7-l@ncc91=&7@&inx+8ghs-l6icnr^@(i!7&=q@*tpf1tmyh0'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-%7-l@ncc91=&7@&inx+8ghs-l6icnr^@(i!7&=q@*tpf1tmyh0')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+# Add Render.com URL to allowed hosts
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -43,15 +51,25 @@ INSTALLED_APPS = [
     'debug_toolbar',
     ]
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    BASE_DIR / "static/assets",
-    BASE_DIR / "static/assets/img_optimized",
-    BASE_DIR / "static/assets/img_optimized/masonry-portfolio",
-    BASE_DIR / "static/assets/img_optimized/testimonials",
-    BASE_DIR / "static/assets/img_optimized/portfolio",
-]  # Pathlib syntax
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/assets'),
+    os.path.join(BASE_DIR, 'static/assets/img_optimized'),
+    os.path.join(BASE_DIR, 'static/assets/img_optimized/masonry-portfolio'),
+    os.path.join(BASE_DIR, 'static/assets/img_optimized/testimonials'),
+    os.path.join(BASE_DIR, 'static/assets/img_optimized/portfolio'),
+]
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Configure static files storage for production
+if not DEBUG:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = BASE_DIR / "staticfiles" 
 
 MIDDLEWARE = [
@@ -91,11 +109,14 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Database
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'),
+        conn_max_age=600
+    )
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

@@ -2,16 +2,32 @@
 *.log
 *.pot
 *.pyc
-__pycache__
-db.sqlite3
-media
+__pycache__/
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-*
+media/
+staticfiles/
+.env
+.env.*
+!.env.example
 
 # Backup files # 
 *.bak 
 
-# Python # 
-*.py[cod] 
-*$py.class 
+# Python #
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
 
 # Distribution / packaging 
 .Python 
