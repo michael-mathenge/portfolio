@@ -1,0 +1,35 @@
+{% extends 'portfolio/partials/base.html' %}
+{% load static %}
+
+{% block title %}Michael Mathenge - Portfolio{% endblock %}
+
+{% block content %}
+  <!-- Hero Section -->
+  {% include 'portfolio/sections/hero.html' %}
+
+  <main id="main">
+    <!-- About Section -->
+    {% include 'portfolio/sections/about.html' %}
+
+    <!-- Stats Section -->
+    {% include 'portfolio/sections/stats.html' %}
+
+    <!-- Resume Section -->
+    {% include 'portfolio/sections/resume.html' %}
+
+    <!-- Portfolio Section -->
+    {% include 'portfolio/sections/portfolio.html' %}
+
+    <!-- Services Section -->
+    {% include 'portfolio/sections/services.html' %}
+
+    <!-- Testimonials Section -->
+    {% include 'portfolio/sections/testimonials.html' %}
+
+    <!-- Contact Section -->
+    {% include 'portfolio/sections/contact.html' %}
+  </main>
+
+  <!-- Footer -->
+  {% include 'portfolio/partials/footer.html' %}
+{% endblock %}

@@ -1,0 +1,115 @@
+{% load static %}
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio section">
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Portfolio</h2>
+    <p>Explore my recent projects and work samples that demonstrate my expertise in Agile project management and software development.</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 d-flex justify-content-center">
+        <ul id="portfolio-flters">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-agile">Agile Projects</li>
+          <li data-filter=".filter-dev">Development</li>
+          <li data-filter=".filter-data">Data Analysis</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+      <!-- Portfolio Item 1 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-agile">
+        <div class="portfolio-wrap">
+          <img src="{% static 'img/portfolio/agile-transformation.jpg' %}" class="img-fluid" alt="Agile Transformation Project">
+          <div class="portfolio-info">
+            <h4>Agile Transformation</h4>
+            <p>Banking Sector</p>
+            <div class="portfolio-links">
+              <a href="{% static 'img/portfolio/agile-transformation.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Agile Transformation"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item 2 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-dev">
+        <div class="portfolio-wrap">
+          <img src="{% static 'img/portfolio/banking-app.jpg' %}" class="img-fluid" alt="Banking Application">
+          <div class="portfolio-info">
+            <h4>Banking Application</h4>
+            <p>Java Development</p>
+            <div class="portfolio-links">
+              <a href="{% static 'img/portfolio/banking-app.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Banking Application"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item 3 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-data">
+        <div class="portfolio-wrap">
+          <img src="{% static 'img/portfolio/data-dashboard.jpg' %}" class="img-fluid" alt="Data Analytics Dashboard">
+          <div class="portfolio-info">
+            <h4>Analytics Dashboard</h4>
+            <p>Data Visualization</p>
+            <div class="portfolio-links">
+              <a href="{% static 'img/portfolio/data-dashboard.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Analytics Dashboard"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item 4 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-agile">
+        <div class="portfolio-wrap">
+          <img src="{% static 'img/portfolio/scrum-implementation.jpg' %}" class="img-fluid" alt="Scrum Implementation">
+          <div class="portfolio-info">
+            <h4>Scrum Implementation</h4>
+            <p>Team Training</p>
+            <div class="portfolio-links">
+              <a href="{% static 'img/portfolio/scrum-implementation.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Scrum Implementation"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item 5 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-dev">
+        <div class="portfolio-wrap">
+          <img src="{% static 'img/portfolio/mobile-app.jpg' %}" class="img-fluid" alt="Mobile Banking App">
+          <div class="portfolio-info">
+            <h4>Mobile Banking App</h4>
+            <p>iOS & Android</p>
+            <div class="portfolio-links">
+              <a href="{% static 'img/portfolio/mobile-app.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Mobile Banking App"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Item 6 -->
+      <div class="col-lg-4 col-md-6 portfolio-item filter-data">
+        <div class="portfolio-wrap">
+          <img src="{% static 'img/portfolio/team-performance.jpg' %}" class="img-fluid" alt="Team Performance Analysis">
+          <div class="portfolio-info">
+            <h4>Team Performance</h4>
+            <p>Data Analysis</p>
+            <div class="portfolio-links">
+              <a href="{% static 'img/portfolio/team-performance.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Team Performance Analysis"><i class="bx bx-plus"></i></a>
+              <a href="#" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Portfolio Section -->
