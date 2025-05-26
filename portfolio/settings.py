@@ -64,15 +64,20 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
+# Ensure WhiteNoise uses the correct storage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Configure static files storage for production
 if not DEBUG:
-    # Simplified WhiteNoise configuration
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
-    WHITENOISE_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'root')
+    # Use WhiteNoise for serving static files
+    WHITENOISE_USE_FINDERS = True
+    WHITENOISE_MANIFEST_STRICT = False
+    WHITENOISE_ALLOW_ALL_ORIGINS = True
+    WHITENOISE_AUTOREFRESH = True
 STATIC_ROOT = BASE_DIR / "staticfiles" 
 
 MIDDLEWARE = [
