@@ -48,8 +48,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'datascience.apps.DatascienceConfig',
     'portfolio.apps.PortfolioConfig',
-    'debug_toolbar',
 ]
+
+# Add debug toolbar in development
+if DEBUG:
+    INSTALLED_APPS += ['debug_toolbar']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,8 +63,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+# Add debug toolbar middleware in development
+if DEBUG:
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = 'portfolio.urls'
 
@@ -118,9 +124,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Debug Toolbar
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
+if DEBUG:
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
