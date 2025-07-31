@@ -25,10 +25,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('about/', views.about, name='about'),
-    path('resume/', views.resume, name='resume'),
-    path('portfolio/', views.portfolio, name='portfolio'),
-    path('services/', views.services, name='services'),
-    path('contact/', views.contact, name='contact'),
+    path('datascience/', include('datascience.urls')),
     path('__debug__/', include(debug_toolbar.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
