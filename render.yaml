@@ -1,15 +1,9 @@
-databases:
-  - name: portfolio_db
-    databaseName: portfolio
-    user: portfolio_user
-    plan: free
-
 services:
   - type: web
     name: portfolio
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn portfolio.wsgi:application"
+    startCommand: "gunicorn portfolio.wsgi:application --workers 4 --threads 4 --worker-tmp-dir /dev/shm"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -20,5 +14,11 @@ services:
       - key: WEB_CONCURRENCY
         value: 4
       - key: PYTHON_VERSION
-        value: 3.10.0
+        value: 3.11.4
+    plan: free
+
+databases:
+  - name: portfolio_db
+    databaseName: portfolio
+    user: portfolio_user
     plan: free

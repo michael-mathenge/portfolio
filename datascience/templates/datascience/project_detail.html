@@ -1,0 +1,48 @@
+{% extends "portfolio/partials/base.html" %}
+
+{% block content %}
+<section class="portfolio-details">
+  <div class="container">
+
+    <div class="row gy-4">
+
+      <div class="col-lg-8">
+        <div class="portfolio-details-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            {% for viz in project.visualizations.all %}
+            <div class="swiper-slide">
+              <img src="{{ viz.image.url }}" alt="{{ viz.title }}">
+            </div>
+            {% endfor %}
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="portfolio-info">
+          <h3>{{ project.title }}</h3>
+          <ul>
+            <li><strong>Category</strong>: {{ project.get_category_display }}</li>
+            <li><strong>Project date</strong>: {{ project.created_date|date:"d M, Y" }}</li>
+            {% if project.github_link %}
+            <li><strong>GitHub URL</strong>: <a href="{{ project.github_link }}" target="_blank">View on GitHub</a></li>
+            {% endif %}
+            {% if project.live_demo_link %}
+            <li><strong>Live Demo</strong>: <a href="{{ project.live_demo_link }}" target="_blank">View Demo</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="portfolio-description">
+          <h2>Project Description</h2>
+          <p>
+            {{ project.description|linebreaks }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "portfolio/partials/base.html" %}
+
+{% block content %}
+<section class="portfolio">
+  <div class="container">
+    <div class="section-title">
+      <h2>Data Science Projects</h2>
+      <p>A collection of my data science work.</p>
+    </div>
+
+    <div class="row portfolio-container">
+      {% for project in projects %}
+      <div class="col-lg-4 col-md-6 portfolio-item filter-{{ project.category|lower }}">
+        <div class="portfolio-wrap">
+          <div class="portfolio-info">
+            <h4><a href="{% url 'datascience:project_detail' project.pk %}">{{ project.title }}</a></h4>
+            <p>{{ project.category }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
