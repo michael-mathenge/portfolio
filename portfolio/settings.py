@@ -36,6 +36,11 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
+# Add PythonAnywhere domain to allowed hosts
+PYTHONANYWHERE_USERNAME = os.environ.get('PYTHONANYWHERE_USERNAME')
+if PYTHONANYWHERE_USERNAME:
+    ALLOWED_HOSTS.append(f'{PYTHONANYWHERE_USERNAME}.pythonanywhere.com')
+
 
 # Application definition
 
@@ -97,12 +102,18 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Default to SQLite for local development
 DATABASES = {
     'default': dj_database_url.config(
         default=os.getenv('DATABASE_URL', f'sqlite:///{os.path.join(BASE_DIR, "db.sqlite3")}'),
         conn_max_age=600
     )
 }
+
+# PythonAnywhere MySQL database configuration
+if os.getenv('PYTHONANYWHERE_DATABASE_URL'):
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.parse(os.getenv('PYTHONANYWHERE_DATABASE_URL'))
 
 
 # Password validation
