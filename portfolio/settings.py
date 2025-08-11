@@ -29,7 +29,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-%7-l@ncc91=&7@&inx+8ghs-l6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+# Handle ALLOWED_HOSTS with proper default value and None checking
+allowed_hosts_str = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1')
+ALLOWED_HOSTS = allowed_hosts_str.split(',') if allowed_hosts_str else ['localhost', '127.0.0.1']
 
 # Add PythonAnywhere domain to allowed hosts if not already present
 PYTHONANYWHERE_USERNAME = os.environ.get('PYTHONANYWHERE_USERNAME')
@@ -42,11 +44,6 @@ if PYTHONANYWHERE_USERNAME:
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-# Add PythonAnywhere domain to allowed hosts
-PYTHONANYWHERE_USERNAME = os.environ.get('PYTHONANYWHERE_USERNAME')
-if PYTHONANYWHERE_USERNAME:
-    ALLOWED_HOSTS.append(f'{PYTHONANYWHERE_USERNAME}.pythonanywhere.com')
 
 
 # Application definition
