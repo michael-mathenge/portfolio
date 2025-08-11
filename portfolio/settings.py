@@ -41,6 +41,9 @@ pythonanywhere_host = 'michaelmathenge.pythonanywhere.com'
 if pythonanywhere_host not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(pythonanywhere_host)
 
+# Debug print to see what's in ALLOWED_HOSTS
+print(f"ALLOWED_HOSTS: {ALLOWED_HOSTS}")
+
 # Add Render.com URL to allowed hosts
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
