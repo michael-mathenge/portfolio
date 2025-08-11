@@ -39,6 +39,13 @@ if PYTHONANYWHERE_USERNAME:
     pythonanywhere_host = f'{PYTHONANYWHERE_USERNAME}.pythonanywhere.com'
     if pythonanywhere_host not in ALLOWED_HOSTS:
         ALLOWED_HOSTS.append(pythonanywhere_host)
+elif 'pythonanywhere.com' in os.environ.get('HOSTNAME', ''):
+    # Fallback check for PythonAnywhere environment
+    import getpass
+    username = getpass.getuser()
+    pythonanywhere_host = f'{username}.pythonanywhere.com'
+    if pythonanywhere_host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(pythonanywhere_host)
 
 # Add Render.com URL to allowed hosts
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
