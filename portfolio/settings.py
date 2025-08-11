@@ -122,6 +122,20 @@ DATABASES = {
 if os.getenv('PYTHONANYWHERE_DATABASE_URL'):
     import dj_database_url
     DATABASES['default'] = dj_database_url.parse(os.getenv('PYTHONANYWHERE_DATABASE_URL'))
+else:
+    # Fallback to direct configuration if environment variable is not set
+    import os
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'michaelmathenge$portfolio',
+        'USER': 'michaelmathenge',
+        'PASSWORD': os.getenv('PYTHONANYWHERE_DB_PASSWORD', ''),  # Set this in environment variables
+        'HOST': 'michaelmathenge.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+    }
 
 
 # Password validation
