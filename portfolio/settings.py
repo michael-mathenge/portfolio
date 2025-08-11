@@ -31,6 +31,13 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
+# Add PythonAnywhere domain to allowed hosts if not already present
+PYTHONANYWHERE_USERNAME = os.environ.get('PYTHONANYWHERE_USERNAME')
+if PYTHONANYWHERE_USERNAME:
+    pythonanywhere_host = f'{PYTHONANYWHERE_USERNAME}.pythonanywhere.com'
+    if pythonanywhere_host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(pythonanywhere_host)
+
 # Add Render.com URL to allowed hosts
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:

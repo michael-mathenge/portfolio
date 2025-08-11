@@ -15,7 +15,7 @@ You can upload your code using Git or SFTP:
 
 ```bash
 # Using Git (recommended)
-git clone https://github.com/your_username/portfolio.git
+git clone https://github.com/michaelmathenge/portfolio.git
 ```
 
 ### 2. Set Up Virtual Environment
@@ -23,7 +23,7 @@ git clone https://github.com/your_username/portfolio.git
 In a PythonAnywhere console:
 
 ```bash
-mkvirtualenv portfolio-env --python=/usr/bin/python3.8
+mkvirtualenv portfolio-env --python=/usr/bin/python3.11
 pip install -r requirements.txt
 ```
 
@@ -46,14 +46,14 @@ In the PythonAnywhere web interface:
    - Note the hostname, username, and password
 
 2. Update your database settings in the environment variables:
-   - `PYTHONANYWHERE_DATABASE_URL`: mysql://your_username:your_password@your_username.mysql.pythonanywhere-services.com/your_username$portfolio
+   - `PYTHONANYWHERE_DATABASE_URL`: mysql://michaelmathenge:your_password@michaelmathenge.mysql.pythonanywhere-services.com/michaelmathenge$portfolio
 
 ### 5. Run Migrations
 
 In a PythonAnywhere console:
 
 ```bash
-cd /home/your_username/portfolio
+cd /home/michaelmathenge/portfolio
 python manage.py migrate
 python manage.py collectstatic --noinput
 python manage.py createsuperuser
@@ -66,14 +66,14 @@ In the PythonAnywhere web interface:
 1. Go to the "Web" tab
 2. Create a new web app or edit existing one
 3. Set the following:
-   - Source code: `/home/your_username/portfolio`
-   - Working directory: `/home/your_username/portfolio`
-   - Virtual environment path: `/home/your_username/.virtualenvs/portfolio-env`
-   - WSGI file: `/home/your_username/portfolio/pythonanywhere_wsgi.py`
+   - Source code: `/home/michaelmathenge/portfolio`
+   - Working directory: `/home/michaelmathenge/portfolio`
+   - Virtual environment path: `/home/michaelmathenge/.virtualenvs/portfolio-env`
+   - WSGI file: `/home/michaelmathenge/portfolio/pythonanywhere_wsgi.py`
 
 4. Configure static files:
    - URL: `/static/`
-   - Path: `/home/your_username/portfolio/staticfiles`
+   - Path: `/home/michaelmathenge/portfolio/staticfiles`
 
 ### 7. Reload the Web App
 
@@ -89,7 +89,7 @@ PythonAnywhere provides excellent shell access:
 4. Run any Django management commands:
 
 ```bash
-cd /home/your_username/portfolio
+cd /home/michaelmathenge/portfolio
 python manage.py changepassword Mathenge
 ```
 

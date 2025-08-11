@@ -2,7 +2,7 @@ import os
 import sys
 
 # Add your project directory to the sys.path
-path = '/home/your_username/portfolio'  # Replace 'your_username' with your PythonAnywhere username
+path = '/home/michaelmathenge/portfolio'
 if path not in sys.path:
     sys.path.append(path)
 
